@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project: one
+  week_of: 2025-11-17
+  prompt_type: MyString
+  content: MyText
+
+two:
+  project: two
+  week_of: 2025-11-17
+  prompt_type: MyString
+  content: MyText
