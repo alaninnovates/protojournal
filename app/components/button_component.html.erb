@@ -1,0 +1,9 @@
+<% if is_link? %>
+  <%= link_to href, method: method, **button_attributes do %>
+    <%= content? ? content : display_text %>
+  <% end %>
+<% else %>
+  <%= tag.button type: type, **button_attributes do %>
+    <%= content? ? content : display_text %>
+  <% end %>
+<% end %>

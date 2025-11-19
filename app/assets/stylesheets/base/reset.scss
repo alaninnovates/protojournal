@@ -1,0 +1,103 @@
+// Reset & Base Styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-body);
+  color: var(--foreground);
+  background-color: var(--background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Remove default styles from interactive elements
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 200ms;
+}
+
+// List resets
+ul,
+ol {
+  list-style: none;
+}
+
+// Form resets
+input,
+textarea,
+select {
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  padding: var(--space-xs) var(--space-s);
+  color: var(--foreground);
+  background-color: var(--input-background);
+  transition: border-color 200ms, box-shadow 200ms;
+
+  &:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+  }
+
+  &:disabled {
+    background-color: var(--muted);
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+// Mono font for specific input types
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+// Table resets
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  text-align: left;
+  padding: var(--space-s);
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  background-color: var(--secondary);
+  font-weight: 600;
+  color: var(--secondary-foreground);
+}

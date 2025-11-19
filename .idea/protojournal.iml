@@ -57,6 +57,7 @@
     <orderEntry type="library" scope="PROVIDED" name="connection_pool (v2.5.4, mise: 3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="crass (v1.0.6, mise: 3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="csv (v3.3.5, mise: 3.4.7) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="dartsass-rails (v0.5.1, mise: 3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="date (v3.5.0, mise: 3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="debug (v1.11.0, mise: 3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="dotenv (v3.1.8, mise: 3.4.7) [gem]" level="application" />
@@ -68,6 +69,7 @@
     <orderEntry type="library" scope="PROVIDED" name="ffi (v1.17.2, mise: 3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="fugit (v1.12.1, mise: 3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v1.3.0, mise: 3.4.7) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="google-protobuf (v4.33.1, mise: 3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v1.14.7, mise: 3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="image_processing (v1.14.0, mise: 3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="importmap-rails (v2.2.2, mise: 3.4.7) [gem]" level="application" />
@@ -136,6 +138,7 @@
     <orderEntry type="library" scope="PROVIDED" name="ruby-progressbar (v1.13.0, mise: 3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby-vips (v2.2.5, mise: 3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubyzip (v3.2.2, mise: 3.4.7) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sass-embedded (v1.94.1, mise: 3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="securerandom (v0.4.1, mise: 3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="selenium-webdriver (v4.38.0, mise: 3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="simple_form (v5.4.0, mise: 3.4.7) [gem]" level="application" />
@@ -157,6 +160,7 @@
     <orderEntry type="library" scope="PROVIDED" name="unicode-emoji (v4.1.0, mise: 3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="uri (v1.1.1, mise: 3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="useragent (v0.16.11, mise: 3.4.7) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="view_component (v4.1.1, mise: 3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="web-console (v4.2.1, mise: 3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="websocket (v1.2.11, mise: 3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="websocket-driver (v0.8.0, mise: 3.4.7) [gem]" level="application" />

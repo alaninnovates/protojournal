@@ -1,3 +1,15 @@
-<h1>Home#index</h1>
-<p><%= @user.email_address %></p>
-<%= button_to "Sign out", login_path, method: :delete %>
+<div class="container mt-xl">
+  <div class="auth-card">
+    <h1>Welcome back</h1>
+    <p class="user-email"><%= @user.email_address %></p>
+    
+    <div class="mt-l">
+      <%= render ButtonComponent.new(
+        text: "Sign out",
+        color: :red,
+        href: login_path,
+        method: :delete,
+      ) %>
+    </div>
+  </div>
+</div>
