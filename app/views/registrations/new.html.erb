@@ -1,43 +1,47 @@
-<div class="container">
-  <div class="auth-container">
-    <div class="auth-card">
-      <h1>Create Account</h1>
+<div class="flex items-center justify-center min-h-screen p-4">
+  <div class="w-full max-w-sm bg-card rounded-lg p-10 shadow-xl border border-border">
+    <h1 class="text-center text-3xl font-bold mb-8">Create Account</h1>
 
-      <% if flash[:alert] %>
-        <div class="alert alert--error">
-          <%= flash[:alert] %>
-        </div>
-      <% end %>
-
-      <% if flash[:notice] %>
-        <div class="alert alert--success">
-          <%= flash[:notice] %>
-        </div>
-      <% end %>
-
-      <%= form_with model: @user, url: signup_path, local: true, class: "auth-form" do |form| %>
-        <div class="form-group">
-          <%= form.label :email_address, "Email address" %>
-          <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", class: "form-input" %>
-        </div>
-
-        <div class="form-group">
-          <%= form.label :password %>
-          <%= form.password_field :password, required: true, autocomplete: "new-password", placeholder: "Create a password (min. 8 characters)", minlength: 8, maxlength: 72, class: "form-input" %>
-        </div>
-
-        <div class="form-actions">
-          <%= form.submit "Sign up", class: "btn btn--green btn--lg" %>
-        </div>
-      <% end %>
-
-      <div class="auth-footer">
-        <p class="mb-0">
-          <small>
-            Already have an account? <%= link_to "Sign in", login_path %>
-          </small>
-        </p>
+    <% if flash[:alert] %>
+      <div class="bg-red-500 bg-opacity-10 text-red-300 border border-red-500 border-opacity-30 rounded-lg p-4 mb-6 text-sm">
+        <%= flash[:alert] %>
       </div>
+    <% end %>
+
+    <% if flash[:notice] %>
+      <div class="bg-green-500 bg-opacity-10 text-green-300 border border-green-500 border-opacity-30 rounded-lg p-4 mb-6 text-sm">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+    <%= form_with model: @user, url: signup_path, local: true, class: "flex flex-col gap-6" do |form| %>
+      <div class="flex flex-col gap-2">
+        <%= form.label :email_address, "Email address", class: "text-sm font-medium" %>
+        <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", class: "px-4 py-3 bg-input-background text-foreground border border-border rounded-lg font-mono text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-purple-500 focus:ring-opacity-20 transition" %>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <%= form.label :password, class: "text-sm font-medium" %>
+        <%= form.password_field :password, required: true, autocomplete: "new-password", placeholder: "Create a password (min. 8 characters)", minlength: 8, maxlength: 72, class: "px-4 py-3 bg-input-background text-foreground border border-border rounded-lg font-mono text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-purple-500 focus:ring-opacity-20 transition" %>
+      </div>
+
+      <div>
+        <%= render(ButtonComponent.new(
+          text: "Sign up",
+          color: :green,
+          variant: :default,
+          size: :md,
+          type: :submit,
+          )) %>
+      </div>
+    <% end %>
+
+    <div class="text-center mt-8 pt-6 border-t border-border">
+      <p>
+        <small class="text-muted-foreground">
+          Already have an account? <%= link_to "Sign in", login_path, class: "text-primary hover:underline opacity-90 hover:opacity-100 transition" %>
+        </small>
+      </p>
     </div>
   </div>
 </div>

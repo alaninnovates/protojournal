@@ -1,64 +1,57 @@
-<aside class="sidebar">
-  <div class="sidebar-header">
-    <h2 class="sidebar-title">ProtoJournal</h2>
+<aside class="fixed bottom-0 left-0 right-0 bg-sidebar border-t border-sidebar-border px-0 py-2 z-50 flex flex-row gap-0 justify-center md:sticky md:top-0 md:h-screen md:w-fit md:border-r md:px-6 md:py-8 md:overflow-y-auto md:flex md:flex-col md:gap-8">
+  <div class="hidden md:block">
+    <h2 class="text-2xl font-bold text-sidebar-foreground tracking-tight">ProtoJournal</h2>
   </div>
-
-  <nav class="sidebar-nav">
-    <ul class="nav-list">
-      <li class="nav-item">
-        <%= link_to root_path, class: "nav-link #{current_page?(root_path) ? 'active' : ''}" do %>
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-            <polyline points="9 22 9 12 15 12 15 22"/>
-          </svg>
-          <span class="nav-label">Home</span>
-        <% end %>
+  <nav class="flex-1 md:flex md:w-full">
+    <ul class="flex flex-col md:flex-row gap-8 md:justify-center md:gap-0 md:w-full">
+      <li class="md:flex-1 md:max-w-20">
+        <%= render(ButtonComponent.new(
+          text: "Dashboard",
+          color: :green,
+          variant: :default,
+          size: :md,
+          href: "#",
+        )) %>
       </li>
 
-      <li class="nav-item">
-        <%= link_to "#", class: "nav-link" do %>
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
-            <path d="M13 17H7v-5h6v5z"/>
-            <path d="M19 9h-6V5h6v4z"/>
-          </svg>
-          <span class="nav-label">Projects</span>
-        <% end %>
+      <li class="md:flex-1 md:max-w-20">
+        <%= render(ButtonComponent.new(
+          text: "Projects",
+          color: :blue,
+          variant: :default,
+          size: :md,
+          href: "#",
+        )) %>
       </li>
 
-      <li class="nav-item">
-        <%= link_to "#", class: "nav-link" do %>
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="3" y="3" width="7" height="7"/>
-            <rect x="14" y="3" width="7" height="7"/>
-            <rect x="14" y="14" width="7" height="7"/>
-            <rect x="3" y="14" width="7" height="7"/>
-          </svg>
-          <span class="nav-label">Photos</span>
-        <% end %>
+      <li class="md:flex-1 md:max-w-20">
+        <%= render(ButtonComponent.new(
+          text: "Photos",
+          color: :blue,
+          variant: :default,
+          size: :md,
+          href: "#",
+        )) %>
       </li>
 
-      <li class="nav-item">
-        <%= link_to "#", class: "nav-link" do %>
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-            <line x1="10" y1="8" x2="16" y2="8"/>
-            <line x1="10" y1="12" x2="16" y2="12"/>
-            <line x1="10" y1="16" x2="14" y2="16"/>
-          </svg>
-          <span class="nav-label">Journals</span>
-        <% end %>
+      <li class="md:flex-1 md:max-w-20">
+        <%= render(ButtonComponent.new(
+          text: "Journals",
+          color: :blue,
+          variant: :default,
+          size: :md,
+          href: "#",
+        )) %>
       </li>
 
-      <li class="nav-item">
-        <%= link_to "#", class: "nav-link" do %>
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
-          </svg>
-          <span class="nav-label">Profile</span>
-        <% end %>
+      <li class="md:flex-1 md:max-w-20">
+        <%= render(ButtonComponent.new(
+          text: "Profile",
+          color: :blue,
+          variant: :default,
+          size: :md,
+          href: "#",
+        )) %>
       </li>
     </ul>
   </nav>
