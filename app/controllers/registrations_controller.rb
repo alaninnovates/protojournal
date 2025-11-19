@@ -13,7 +13,7 @@ class RegistrationsController < ApplicationController
       start_new_session_for @user
       redirect_to after_authentication_url, notice: "Account created successfully."
     else
-      redirect_to new_registration_path, alert: @user.errors.full_messages.to_sentence
+      redirect_to signup_path, alert: @user.errors.full_messages.to_sentence
     end
   end
 
