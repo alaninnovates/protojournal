@@ -1,3 +1,5 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
 # == Schema Information
 #
 # Table name: photos
@@ -8,10 +10,10 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
-class Photo < ApplicationRecord
-  has_one_attached :image
-  has_many :photo_tags, dependent: :destroy
-  has_many :tags, through: :photo_tags
+one:
+  title: MyString
+  description: MyText
 
-  validates :title, presence: true
-end
+two:
+  title: MyString
+  description: MyText

@@ -8,10 +8,10 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
-class Photo < ApplicationRecord
-  has_one_attached :image
-  has_many :photo_tags, dependent: :destroy
-  has_many :tags, through: :photo_tags
+require "test_helper"
 
-  validates :title, presence: true
+class PhotoTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
 end
