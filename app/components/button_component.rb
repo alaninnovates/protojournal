@@ -29,7 +29,7 @@ class ButtonComponent < ViewComponent::Base
 
   def button_classes
     classes = []
-    classes << "rounded-md"
+    classes << "rounded-md flex w-full items-center justify-center"
 
     color_map = {
       red: "bg-red-500 hover:bg-red-600 text-white focus:ring-red-500",
