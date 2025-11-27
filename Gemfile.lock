@@ -277,6 +277,9 @@ GEM
       ransack (>= 2.3.2)
       simple_form (>= 5.0.1)
       terminal-table
+    rails_icons (1.5.1)
+      nokogiri (~> 1.16, >= 1.16.4)
+      rails (>= 7.0)
     railties (8.1.1)
       actionpack (= 8.1.1)
       activesupport (= 8.1.1)
@@ -451,6 +454,7 @@ DEPENDENCIES
   puma (>= 5.0)
   rails (~> 8.1.1)
   rails_db
+  rails_icons (~> 1.5)
   rubocop-rails-omakase
   selenium-webdriver
   solid_cable

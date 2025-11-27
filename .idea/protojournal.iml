@@ -121,6 +121,7 @@
     <orderEntry type="library" scope="PROVIDED" name="rails-dom-testing (v2.3.0, mise: 3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails-html-sanitizer (v1.6.2, mise: 3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails_db (v2.5.0, mise: 3.4.7) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rails_icons (v1.5.1, mise: 3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="railties (v8.1.1, mise: 3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rainbow (v3.1.1, mise: 3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v13.3.1, mise: 3.4.7) [gem]" level="application" />
@@ -156,6 +157,7 @@
     <orderEntry type="library" scope="PROVIDED" name="tsort (v0.2.0, mise: 3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="turbo-rails (v2.0.20, mise: 3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tzinfo (v2.0.6, mise: 3.4.7) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="tzinfo-data (v1.2025.2, mise: 3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="unicode-display_width (v3.2.0, mise: 3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="unicode-emoji (v4.1.0, mise: 3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="uri (v1.1.1, mise: 3.4.7) [gem]" level="application" />
