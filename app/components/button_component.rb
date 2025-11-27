@@ -5,7 +5,7 @@ class ButtonComponent < ViewComponent::Base
   VARIANTS = %i[default].freeze
   SIZES = %i[sm md lg].freeze
 
-  attr_reader :text, :color, :variant, :size, :href, :type, :method, :html_options
+  attr_reader :text, :color, :variant, :size, :href, :type, :icon, :mobile_icon_only, :method, :html_options
 
   def initialize(
     text: nil,
@@ -14,6 +14,8 @@ class ButtonComponent < ViewComponent::Base
     size: :md,
     href: nil,
     type: nil,
+    icon: nil,
+    mobile_icon_only: false,
     method: nil,
     **html_options
   )
@@ -23,6 +25,8 @@ class ButtonComponent < ViewComponent::Base
     @size = normalize(:size, size, SIZES)
     @href = href
     @type = type
+    @icon = icon
+    @mobile_icon_only = mobile_icon_only
     @method = method
     @html_options = html_options
   end

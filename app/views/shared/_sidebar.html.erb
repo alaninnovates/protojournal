@@ -3,7 +3,7 @@
     <h2 class="text-2xl font-bold text-sidebar-foreground tracking-tight">ProtoJournal</h2>
   </div>
   <nav class="flex-1 md:flex md:w-full">
-    <ul class="flex flex-row md:flex-col gap-2 w-full">
+    <ul class="flex flex-row md:flex-col gap-2 w-full justify-center md:justify-start">
       <li class="md:w-full">
         <%= render(ButtonComponent.new(
           text: "Dashboard",
@@ -11,6 +11,8 @@
           variant: :default,
           size: :md,
           href: root_path,
+          icon: "house",
+          mobile_icon_only: true,
         )) %>
       </li>
 
@@ -21,6 +23,8 @@
           variant: :default,
           size: :md,
           href: projects_path,
+          icon: "folder-open",
+          mobile_icon_only: true,
         )) %>
       </li>
 
@@ -31,6 +35,8 @@
           variant: :default,
           size: :md,
           href: photos_path,
+          icon: "camera",
+          mobile_icon_only: true,
         )) %>
       </li>
 
@@ -41,6 +47,8 @@
           variant: :default,
           size: :md,
           href: "#",
+          icon: "notebook",
+          mobile_icon_only: true,
         )) %>
       </li>
 
@@ -51,6 +59,8 @@
           variant: :default,
           size: :md,
           href: "#",
+          icon: "user",
+          mobile_icon_only: true,
         )) %>
       </li>
     </ul>

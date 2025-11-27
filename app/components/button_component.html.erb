@@ -1,9 +1,39 @@
 <% if is_link? %>
   <%= link_to href, method: method, **button_attributes do %>
-    <%= content? ? content : display_text %>
+    <% if @icon.present? %>
+      <div class="flex items-center justify-center gap-2">
+        <%= RailsIcons::Icon.new(
+              name: @icon,
+              library: "lucide",
+              variant: nil,
+              arguments: { class: "w-5 h-5" }
+            ).svg
+        %>
+        <span class="<%= @mobile_icon_only ? 'hidden md:inline-block' : '' %>">
+          <%= content? ? content : display_text %>
+        </span>
+      </div>
+    <% else %>
+      <%= content? ? content : display_text %>
+    <% end %>
   <% end %>
 <% else %>
   <%= tag.button type: type, **button_attributes do %>
-    <%= content? ? content : display_text %>
+    <% if @icon.present? %>
+      <div class="flex items-center justify-center gap-2">
+        <%= RailsIcons::Icon.new(
+              name: @icon,
+              library: "lucide",
+              variant: nil,
+              arguments: { class: "w-5 h-5" }
+            ).svg
+        %>
+        <span class="<%= @mobile_icon_only ? 'hidden md:inline-block' : '' %>">
+          <%= content? ? content : display_text %>
+        </span>
+      </div>
+    <% else %>
+      <%= content? ? content : display_text %>
+    <% end %>
   <% end %>
 <% end %>
