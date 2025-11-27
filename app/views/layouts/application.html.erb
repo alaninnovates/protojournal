@@ -24,6 +24,26 @@
   </head>
 
   <body class="bg-background text-foreground">
+    <div class="fixed inset-x-0 top-4 flex justify-center z-50 pointer-events-none">
+      <div class="w-full max-w-xl px-4">
+        <% flash.each do |type, message| %>
+          <% next if message.blank? %>
+          <% type_class = case type.to_s
+                          when 'notice', 'success' then 'bg-green-600'
+                          when 'alert', 'error' then 'bg-red-600'
+                          else 'bg-blue-600'
+                          end %>
+          <div class="pointer-events-auto mb-4 rounded-md shadow-lg overflow-hidden">
+            <div class="<%= type_class %> text-white px-4 py-3">
+              <div class="flex items-start justify-between">
+                <div class="text-sm"><%= message %></div>
+                <button type="button" class="ml-4 text-white opacity-80 hover:opacity-100" onclick="this.closest('div.pointer-events-auto').remove()">&times;</button>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
     <div class="flex h-screen md:h-auto">
       <% if Current.session %>
         <%= render "shared/sidebar" %>
