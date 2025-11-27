@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ButtonComponent < ViewComponent::Base
-  COLORS = %i[red green blue yellow brown].freeze
+  COLORS = %i[red green blue yellow brown gray].freeze
   VARIANTS = %i[default].freeze
   SIZES = %i[sm md lg].freeze
 
@@ -36,7 +36,8 @@ class ButtonComponent < ViewComponent::Base
       green: "bg-green-500 hover:bg-green-600 text-white focus:ring-green-500",
       blue: "bg-blue-500 hover:bg-blue-600 text-white focus:ring-blue-500",
       yellow: "bg-yellow-400 hover:bg-yellow-500 text-black focus:ring-yellow-400",
-      brown: "bg-amber-700 hover:bg-amber-800 text-white focus:ring-amber-700"
+      brown: "bg-amber-700 hover:bg-amber-800 text-white focus:ring-amber-700",
+      gray: "bg-gray-500 hover:bg-gray-600 text-white focus:ring-gray-500"
     }
     classes << color_map[color] if color.present?
 
