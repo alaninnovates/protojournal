@@ -3,28 +3,28 @@
     <h2 class="text-2xl font-bold text-sidebar-foreground tracking-tight">ProtoJournal</h2>
   </div>
   <nav class="flex-1 md:flex md:w-full">
-    <ul class="flex flex-row md:flex-col gap-2 md:justify-center md:gap-0 w-full">
-      <li class="md:flex-1 md:w-full">
+    <ul class="flex flex-row md:flex-col gap-2 w-full">
+      <li class="md:w-full">
         <%= render(ButtonComponent.new(
           text: "Dashboard",
           color: :green,
           variant: :default,
           size: :md,
-          href: "#",
+          href: root_path,
         )) %>
       </li>
 
-      <li class="md:flex-1 md:w-full">
+      <li class="md:w-full">
         <%= render(ButtonComponent.new(
           text: "Projects",
           color: :blue,
           variant: :default,
           size: :md,
-          href: "#",
+          href: projects_path,
         )) %>
       </li>
 
-      <li class="md:flex-1 md:w-full">
+      <li class="md:w-full">
         <%= render(ButtonComponent.new(
           text: "Photos",
           color: :blue,
@@ -34,7 +34,7 @@
         )) %>
       </li>
 
-      <li class="md:flex-1 md:w-full">
+      <li class="md:w-full">
         <%= render(ButtonComponent.new(
           text: "Journals",
           color: :blue,
@@ -44,7 +44,7 @@
         )) %>
       </li>
 
-      <li class="md:flex-1 md:w-full">
+      <li class="md:w-full">
         <%= render(ButtonComponent.new(
           text: "Profile",
           color: :blue,
