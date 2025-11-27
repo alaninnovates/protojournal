@@ -15,19 +15,20 @@
       </p>
 
       <div class="flex flex-col sm:flex-row gap-3 justify-center">
-        <button
-          class="px-6 py-3 bg-blue-500 text-white rounded-xl flex items-center justify-center gap-2"
-        >
+        <input id="photo_upload_input" type="file" name="photos[]" multiple accept="image/*" class="hidden" data-direct-upload-url="<%= rails_direct_uploads_url %>"/>
+        <label for="photo_upload_input" class="px-6 py-3 bg-blue-500 text-white rounded-xl flex items-center justify-center gap-2 cursor-pointer">
           <%= icon "upload", class: "w-5 h-5" %>
           Upload Photos
-        </button>
+        </label>
 
-        <button
-          class="px-6 py-3 bg-white text-zinc-700 border border-gray-200 rounded-xl hover:bg-gray-50 transition-all flex items-center justify-center gap-2"
+        <input id="photo_camera_input" type="file" name="photos[]" accept="image/*" capture="environment" class="hidden" data-direct-upload-url="<%= rails_direct_uploads_url %>"/>
+        <label
+          for="photo_camera_input"
+          class="px-6 py-3 bg-white text-zinc-700 border border-gray-200 rounded-xl hover:bg-gray-50 transition-all flex items-center justify-center gap-2 cursor-pointer"
         >
           <%= icon "camera", class: "w-5 h-5" %>
           Take Photo
-        </button>
+        </label>
       </div>
     </div>
   </div>
