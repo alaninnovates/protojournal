@@ -1,0 +1,22 @@
+<div id="create-project-modal" data-controller="modal" class="hidden fixed inset-0 z-50 overflow-auto bg-black/30 flex items-center justify-center p-2 md:p-4 w-full h-full">
+  <div id="modal-content" class="bg-white rounded-lg shadow-lg w-full max-w-lg transform transition-all duration-300 opacity-0 scale-95">
+    <div class="flex justify-between items-center border-b p-4">
+      <h2 class="text-xl font-semibold">Create New Project</h2>
+      <button data-action="click->modal#close" class="text-gray-500 hover:text-gray-700">&times;</button>
+    </div>
+    <%= form_with model: Project.new, html: { class: 'p-4' } do |f| %>
+      <div class="mb-4">
+        <%= f.label :name, 'Project Name', for: 'project_name', class: 'block text-gray-700 mb-2' %>
+        <%= f.text_field :name, id: 'project_name', required: true, class: 'w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500' %>
+      </div>
+      <div class="mb-4">
+        <%= f.label :description, 'Description', for: 'project_description', class: 'block text-gray-700 mb-2' %>
+        <%= f.text_area :description, id: 'project_description', rows: 4, class: 'w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500' %>
+      </div>
+      <div class="flex justify-end">
+        <button type="button" data-action="click->modal#close" class="mr-2 px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400">Cancel</button>
+        <%= f.submit 'Create Project', class: 'px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700' %>
+      </div>
+    <% end %>
+  </div>
+</div>

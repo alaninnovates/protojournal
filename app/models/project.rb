@@ -4,9 +4,8 @@
 #
 #  id          :integer          not null, primary key
 #  description :text
-#  name        :string
+#  name        :string           not null
 #  status      :string
-#  title       :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  user_id     :integer          not null
@@ -25,5 +24,4 @@ class Project < ApplicationRecord
   has_many :objectives, dependent: :destroy
 
   validates :name, presence: true
-  validates :title, presence: true
 end

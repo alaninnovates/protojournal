@@ -4,8 +4,22 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @project = current_user.projects.find(params[:id])
   end
 
   def create
+    @project = current_user.projects.build(project_params)
+    @project.status = "active"
+    if @project.save
+      redirect_to project_path(@project), notice: 'Project was successfully created.'
+    else
+      flash.now[:alert] = 'There was an error creating the project.'
+      render :index, status: :unprocessable_entity
+    end
+  end
+
+  private
+  def project_params
+    params.require(:project).permit(:title, :description, :status, :name)
   end
 end
