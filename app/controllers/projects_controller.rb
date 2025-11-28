@@ -6,6 +6,16 @@ class ProjectsController < ApplicationController
   def show
     @project = current_user.projects.find(params[:id])
     @most_recent_journal = @project.journals.order(created_at: :desc).first
+    
+    respond_to do |format|
+      format.html
+      format.json do
+        journals = @project.journals.order(week_start: :desc).map { |j| 
+          { id: j.id, week_start: j.week_start, week_end: j.week_end } 
+        }
+        render json: journals
+      end
+    end
   end
 
   def create

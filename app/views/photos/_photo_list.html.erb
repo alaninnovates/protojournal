@@ -1,0 +1,22 @@
+<div class="mt-8">
+  <h2 class="text-2xl font-bold mb-4">Uploaded Photos</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <% @photos.each do |photo| %>
+    <div class="mt-4 relative">
+    <div class="absolute top-2 left-2 z-10">
+      <button class="bg-blue-600 text-white px-2 py-1 rounded text-sm hover:bg-blue-700 cursor-pointer flex items-center"
+              data-controller="modal"
+              data-action="modal#show"
+              data-modal-dialog-param="add-to-project-modal"
+              data-photo-id="<%= photo.id %>"
+      >
+        <%= icon "plus", class: "w-4 h-4 inline-block mr-1" %>
+        Add to Project
+      </button>
+    </div>
+    <%= image_tag photo.image.variant(resize_to_limit: [600, 600]), class: "block" %>
+    </div>
+    <% end %>
+  </div>
+</div>
+<%= render "add_to_project_modal" %>

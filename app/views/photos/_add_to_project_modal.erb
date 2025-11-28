@@ -1,0 +1,32 @@
+<div id="add-to-project-modal" data-controller="modal" class="hidden fixed inset-0 z-50 overflow-auto bg-black/30 flex items-center justify-center p-2 md:p-4 w-full h-full">
+  <div id="modal-content" class="bg-white rounded-lg shadow-lg w-full max-w-lg transform transition-all duration-300 opacity-0 scale-95" data-controller="photo-association">
+    <%# STEP 1: SELECT PROJECT %>
+    <div id="select-project">
+      <div class="flex justify-between items-center border-b p-4">
+        <h2 class="text-xl font-semibold">Select Project</h2>
+        <button data-action="click->modal#close" class="text-gray-500 hover:text-gray-700">&times;</button>
+      </div>
+      <div class="w-full border border-gray-300 rounded overflow-auto max-h-56 p-4">
+        <% @projects.each_with_index do |project| %>
+          <div class="px-3 py-2 hover:bg-gray-50 flex items-center cursor-pointer w-full"
+               data-action="click->photo-association#selectProject" data-project-id="<%= project.id %>">
+            <span class="truncate"><%= project.name %></span>
+            <%= icon "arrow-right", class: "ml-auto h-4 w-4 text-gray-400" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <%# STEP 2: SELECT OBJECTIVE %>
+    <div id="select-objective" class="hidden">
+      <div class="flex justify-between items-center border-b p-4">
+        <button data-action="click->photo-association#backToProjects" class="text-gray-500 hover:text-gray-700 flex items-center">
+          <%= icon "arrow-left", class: "h-4 w-4 mr-1" %> Back
+        </button>
+        <h2 class="text-xl font-semibold" data-photo-association-target="objectiveTitle">Select Objective</h2>
+        <button data-action="click->modal#close" class="text-gray-500 hover:text-gray-700">&times;</button>
+      </div>
+      <div class="w-full border border-gray-300 rounded overflow-auto max-h-56 p-4" data-photo-association-target="objectiveList">
+      </div>
+    </div>
+  </div>
+</div>

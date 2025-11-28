@@ -14,6 +14,13 @@ class ObjectivesController < ApplicationController
     end
   end
 
+  def latest_journal_objectives
+    project = Project.find(params[:project_id])
+    @latest_journal = project.journals.order(week_start: :desc).first
+    @objectives = @latest_journal.objectives.order(created_at: :desc)
+    render json: @objectives
+  end
+
   private
   def objective_params
     params.require(:objective).permit(:title, :description, :due_date, :project_id)

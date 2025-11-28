@@ -11,9 +11,13 @@ Rails.application.routes.draw do
     resources :journals do
       # resource :reflection, only: [:edit, :update, :create, :show, :new]
     end
-    resources :objectives
+    resources :objectives do
+      get "latest_journal_objectives", to: "objectives#latest_journal_objectives", on: :collection
+    end
   end
-  resources :photos
+  resources :photos do
+    patch "associate", to: "photos#associate", on: :member
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

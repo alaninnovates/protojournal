@@ -1,6 +1,7 @@
 class PhotosController < ApplicationController
   def index
-    @photos = current_user.photos.order(created_at: :desc)
+    @photos = current_user.photos.where(objective_id: nil).order(created_at: :desc)
+    @projects = current_user.projects.order(created_at: :desc)
   end
 
   def create
@@ -23,9 +24,15 @@ class PhotosController < ApplicationController
       redirect_to photos_path, notice: "#{created.size} photos were successfully uploaded."
     else
       flash.now[:alert] = "There was an error uploading some photos."
-      @photos = current_user.photos.order(created_at: :desc)
+      @photos = current_user.photos.where(objective_id: nil).order(created_at: :desc)
       render :index, status: :unprocessable_entity
     end
+  end
+
+  def associate
+    @photo = current_user.photos.find(params[:id])
+    @photo.update(objective_id: params[:objective_id])
+    render json: { success: true }
   end
 
   private

@@ -30,9 +30,5 @@
     </div>
   </div>
 
-  <% @photos.each do |photo| %>
-    <div class="mt-4">
-      <%= image_tag photo.image.variant(resize_to_limit: [600, 600]) %>
-    </div>
-  <% end %>
+  <%= render "photo_list" %>
 </div>
