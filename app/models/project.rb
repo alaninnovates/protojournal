@@ -2,13 +2,12 @@
 #
 # Table name: projects
 #
-#  id          :integer          not null, primary key
-#  description :text
-#  name        :string           not null
-#  status      :string
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  user_id     :integer          not null
+#  id         :integer          not null, primary key
+#  name       :text
+#  status     :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  user_id    :integer          not null
 #
 # Indexes
 #
@@ -19,9 +18,6 @@
 #  user_id  (user_id => users.id)
 #
 class Project < ApplicationRecord
-  belongs_to :user
-  has_many :reflections, dependent: :destroy
-  has_many :objectives, dependent: :destroy
-
+  has_many :journals, dependent: :destroy
   validates :name, presence: true
 end

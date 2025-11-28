@@ -4,25 +4,20 @@
 #
 #  id          :integer          not null, primary key
 #  description :text
-#  due_date    :date
-#  priority    :integer
-#  title       :string
-#  week_of     :date
+#  status      :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  project_id  :integer          not null
+#  journal_id  :integer          not null
 #
 # Indexes
 #
-#  index_objectives_on_project_id  (project_id)
+#  index_objectives_on_journal_id  (journal_id)
 #
 # Foreign Keys
 #
-#  project_id  (project_id => projects.id)
+#  journal_id  (journal_id => journals.id)
 #
 class Objective < ApplicationRecord
-  belongs_to :project
-  has_many :tasks, dependent: :destroy
-
-  validates :title, presence: true
+  belongs_to :journal
+  has_many :photos, dependent: :destroy
 end

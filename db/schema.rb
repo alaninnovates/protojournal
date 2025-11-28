@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_27_220539) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_28_010220) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -39,40 +39,36 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_27_220539) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "journals", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "project_id", null: false
+    t.text "summary"
+    t.datetime "updated_at", null: false
+    t.date "week_end"
+    t.date "week_start"
+    t.index ["project_id"], name: "index_journals_on_project_id"
+  end
+
   create_table "objectives", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.text "description"
-    t.date "due_date"
-    t.integer "priority"
-    t.integer "project_id", null: false
-    t.string "title"
+    t.integer "journal_id", null: false
+    t.text "status"
     t.datetime "updated_at", null: false
-    t.date "week_of"
-    t.index ["project_id"], name: "index_objectives_on_project_id"
-  end
-
-  create_table "photo_tags", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.integer "photo_id", null: false
-    t.integer "tag_id", null: false
-    t.datetime "updated_at", null: false
-    t.index ["photo_id"], name: "index_photo_tags_on_photo_id"
-    t.index ["tag_id"], name: "index_photo_tags_on_tag_id"
+    t.index ["journal_id"], name: "index_objectives_on_journal_id"
   end
 
   create_table "photos", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.text "description"
-    t.string "title"
+    t.integer "objective_id", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
-    t.index ["user_id"], name: "index_photos_on_user_id"
+    t.index ["objective_id"], name: "index_photos_on_objective_id"
   end
 
   create_table "projects", force: :cascade do |t|
     t.datetime "created_at", null: false
-    t.text "description"
-    t.string "name", null: false
+    t.text "name"
     t.string "status"
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
@@ -80,13 +76,13 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_27_220539) do
   end
 
   create_table "reflections", force: :cascade do |t|
-    t.text "content"
+    t.text "challenges"
     t.datetime "created_at", null: false
-    t.integer "project_id", null: false
-    t.string "prompt_type"
+    t.integer "journal_id", null: false
+    t.text "next_steps"
+    t.text "supports"
     t.datetime "updated_at", null: false
-    t.date "week_of"
-    t.index ["project_id"], name: "index_reflections_on_project_id"
+    t.index ["journal_id"], name: "index_reflections_on_journal_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -96,24 +92,6 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_27_220539) do
     t.string "user_agent"
     t.integer "user_id", null: false
     t.index ["user_id"], name: "index_sessions_on_user_id"
-  end
-
-  create_table "tags", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.string "name"
-    t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_tags_on_name", unique: true
-  end
-
-  create_table "tasks", force: :cascade do |t|
-    t.datetime "completed_at"
-    t.datetime "created_at", null: false
-    t.text "description"
-    t.integer "objective_id", null: false
-    t.string "status"
-    t.string "title"
-    t.datetime "updated_at", null: false
-    t.index ["objective_id"], name: "index_tasks_on_objective_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -126,12 +104,10 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_27_220539) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "objectives", "projects"
-  add_foreign_key "photo_tags", "photos"
-  add_foreign_key "photo_tags", "tags"
-  add_foreign_key "photos", "users"
+  add_foreign_key "journals", "projects"
+  add_foreign_key "objectives", "journals"
+  add_foreign_key "photos", "objectives"
   add_foreign_key "projects", "users"
-  add_foreign_key "reflections", "projects"
+  add_foreign_key "reflections", "journals"
   add_foreign_key "sessions", "users"
-  add_foreign_key "tasks", "objectives"
 end
