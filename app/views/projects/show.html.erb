@@ -1,1 +1,23 @@
-<p>hi <%= @project.name %></p>
+<div class="max-w-7xl mx-auto p-8 md:p-4">
+  <div class="mb-4">
+    <h1 class="text-4xl font-bold mb-2"><%= @project.name %></h1>
+  </div>
+  <div
+    data-controller="tabs"
+    data-tabs-active-class="bg-stone-900 text-stone-100 rounded-md"
+    data-tabs-default-tab-value="objectives"
+  >
+    <div class="flex gap-2 mb-4 items-center">
+      <button id="objectives" class="px-4 py-2" data-tabs-target="btn" data-action="click->tabs#select">Objectives</button>
+      <button id="journals" class="px-4 py-2" data-tabs-target="btn" data-action="click->tabs#select">Journals</button>
+    </div>
+    <div class="border-t pt-4">
+      <div data-tabs-target="tab" id="objectives">
+        <%= render "objectives_tab" %>
+      </div>
+      <div data-tabs-target="tab" id="journals">
+        <%= render "journals_tab" %>
+      </div>
+    </div>
+  </div>
+</div>

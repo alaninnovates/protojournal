@@ -7,7 +7,12 @@ Rails.application.routes.draw do
   get "signup", to: "registrations#new"
   resources :passwords, param: :token
 
-  resources :projects
+  resources :projects do
+    resources :journals do
+      # resource :reflection, only: [:edit, :update, :create, :show, :new]
+    end
+    resources :objectives
+  end
   resources :photos
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

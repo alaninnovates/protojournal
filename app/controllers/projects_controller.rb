@@ -5,6 +5,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = current_user.projects.find(params[:id])
+    @most_recent_journal = @project.journals.order(created_at: :desc).first
   end
 
   def create

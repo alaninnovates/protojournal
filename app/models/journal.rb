@@ -22,4 +22,7 @@ class Journal < ApplicationRecord
   belongs_to :project
   has_one :reflection, dependent: :destroy
   has_many :objectives, dependent: :destroy
+
+  validates :week_start, presence: true
+  validates :week_end, presence: true
 end
