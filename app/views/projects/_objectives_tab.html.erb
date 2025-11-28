@@ -31,9 +31,20 @@
         <% end %>
       </div>
     </div>
-    <div class="mt-2 border-b last:border-0 pb-4 pl-4">
+    <div class="mt-2 border-b last:border-0 pb-4 pl-4 space-x-6 overflow-x-auto overflow-y-visible pt-2">
       <% objective.photos.each do |photo| %>
-        <%= image_tag photo.image.variant(resize_to_limit: [200, 200]), class: "inline-block mr-2 rounded-md border border-gray-200" %>
+        <div class="inline-block relative" data-controller="photo-description" data-photo-description-photo-id-value="<%= photo.id %>">
+          <%= image_tag photo.image.variant(resize_to_limit: [200, 200]), class: "block w-[200px] h-auto rounded-md border border-gray-200" %>
+          <p id="description" class="mt-1 text-xs text-gray-600 break-words w-[200px] whitespace-normal"><%= photo.description.presence || "No description" %></p>
+          <% unless objective.status === 'completed' %>
+            <div class="absolute -top-2 -left-2 z-10 bg-red-500 p-2 rounded-full cursor-pointer" data-action="click->photo-description#removePhoto">
+              <%= icon "trash", class: "w-4 h-4 text-white" %>
+            </div>
+            <div class="absolute -top-2 -right-2 z-10 bg-blue-500 p-2 rounded-full cursor-pointer" data-action="click->photo-description#editDescription">
+              <%= icon "pen", class: "w-4 h-4 text-white" %>
+            </div>
+          <% end %>
+        </div>
       <% end %>
     </div>
   <% end %>

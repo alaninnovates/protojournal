@@ -35,6 +35,16 @@ class PhotosController < ApplicationController
     render json: { success: true }
   end
 
+  def update
+    @photo = current_user.photos.find(params[:id])
+    @photo.update(description: params[:description])
+  end
+
+  def destroy
+    @photo = current_user.photos.find(params[:id])
+    @photo.destroy
+  end
+
   private
 
   def photo_params
