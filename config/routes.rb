@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     end
     resources :objectives do
       get "latest_journal_objectives", to: "objectives#latest_journal_objectives", on: :collection
+      patch "complete", to: "objectives#complete", on: :member
     end
   end
   resources :photos do

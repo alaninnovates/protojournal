@@ -21,6 +21,12 @@ class ObjectivesController < ApplicationController
     render json: @objectives
   end
 
+  def complete
+    @objective = Objective.find(params[:id])
+    @objective.update(status: "completed")
+    redirect_to project_path(params[:project_id]), notice: 'Objective marked as completed.'
+  end
+
   private
   def objective_params
     params.require(:objective).permit(:title, :description, :due_date, :project_id)

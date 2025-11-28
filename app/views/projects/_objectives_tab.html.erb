@@ -8,31 +8,33 @@
     </div>
     <div class="flex items-end">
       <%= render(ButtonComponent.new(
-            color: :blue,
-            text: "Add Objective",
-            type: "submit",
-          )) %>
+        color: :blue,
+        text: "Add Objective",
+        type: "submit",
+      )) %>
     </div>
   <% end %>
 
   <% @most_recent_journal.objectives.each do |objective| %>
-    <div class="border-b last:border-0 p-4 flex items-center justify-between">
+    <div class="p-4 flex items-center justify-between">
       <div>
         <p class="text-sm text-gray-600 mt-1"><%= objective.description %></p>
       </div>
       <div class="flex items-center space-x-4">
-      <span class="font-mono text-sm <%= objective.status ? 'text-emerald-500' : 'text-yellow-500' %>">
-        <%= objective.status ? 'Completed' : 'In Progress' %>
+      <span class="font-mono text-sm <%= objective.status === 'pending' ? 'text-yellow-500' : 'text-emerald-500' %>">
+        <%= objective.status.capitalize %>
       </span>
-        <% unless objective.status %>
-          <!--        <form action="<%#= complete_project_objective_path(@project, objective) %>" method="post" class="inline">-->
-          <%#= csrf_meta_tags %>
-          <button type="submit" class="px-3 py-1 bg-emerald-500 text-white rounded-md hover:bg-emerald-600 transition-colors text-sm">
-            Mark as Completed
-          </button>
-          <!--        </form>-->
+        <% unless objective.status === 'completed' %>
+          <%= form_with url: complete_project_objective_path(@project, objective), method: :patch, local: true, class: "inline" do |form| %>
+            <%= form.submit "Mark as Completed", class: "px-3 py-1 bg-emerald-500 text-white rounded-md hover:bg-emerald-600 transition-colors text-sm" %>
+          <% end %>
         <% end %>
       </div>
+    </div>
+    <div class="mt-2 border-b last:border-0 pb-4 pl-4">
+      <% objective.photos.each do |photo| %>
+        <%= image_tag photo.image.variant(resize_to_limit: [200, 200]), class: "inline-block mr-2 rounded-md border border-gray-200" %>
+      <% end %>
     </div>
   <% end %>
 <% end %>

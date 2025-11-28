@@ -7,7 +7,7 @@
       <li class="md:w-full">
         <%= render(ButtonComponent.new(
           text: "Dashboard",
-          color: controller_name == 'home' ? :blue : :gray,
+          color: controller_name == 'home' ? :blue : :black,
           variant: :default,
           size: :md,
           href: root_path,
@@ -19,7 +19,7 @@
       <li class="md:w-full">
         <%= render(ButtonComponent.new(
           text: "Projects",
-          color: controller_name == "projects" ? :blue : :gray,
+          color: controller_name == "projects" ? :blue : :black,
           variant: :default,
           size: :md,
           href: projects_path,
@@ -31,7 +31,7 @@
       <li class="md:w-full">
         <%= render(ButtonComponent.new(
           text: "Photos",
-          color: controller_name == "photos" ? :blue : :gray,
+          color: controller_name == "photos" ? :blue : :black,
           variant: :default,
           size: :md,
           href: photos_path,
@@ -43,7 +43,7 @@
       <li class="md:w-full">
         <%= render(ButtonComponent.new(
           text: "Journals",
-          color: :gray,
+          color: :black,
           variant: :default,
           size: :md,
           href: "#",
@@ -55,7 +55,7 @@
       <li class="md:w-full">
         <%= render(ButtonComponent.new(
           text: "Profile",
-          color: :gray,
+          color: :black,
           variant: :default,
           size: :md,
           href: "#",
