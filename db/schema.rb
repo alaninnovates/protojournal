@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_28_010220) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_28_012658) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -61,9 +61,11 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_28_010220) do
   create_table "photos", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.text "description"
-    t.integer "objective_id", null: false
+    t.integer "objective_id"
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
     t.index ["objective_id"], name: "index_photos_on_objective_id"
+    t.index ["user_id"], name: "index_photos_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -107,6 +109,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_28_010220) do
   add_foreign_key "journals", "projects"
   add_foreign_key "objectives", "journals"
   add_foreign_key "photos", "objectives"
+  add_foreign_key "photos", "users"
   add_foreign_key "projects", "users"
   add_foreign_key "reflections", "journals"
   add_foreign_key "sessions", "users"
