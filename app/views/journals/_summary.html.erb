@@ -1,0 +1,24 @@
+<div data-controller="editable">
+  <%# VIEW MODE %>
+  <div data-editable-target="display" class="flex items-center gap-2">
+    <p><%= @journal.summary || "Add a summary..." %></p>
+    <div class="bg-blue-500 p-2 rounded-full cursor-pointer" data-action="click->editable#edit">
+      <%= icon "pen", class: "w-4 h-4 text-white" %>
+    </div>
+  </div>
+
+  <%# EDIT MODE %>
+  <%= form_with model: journal,
+                url: project_journal_path(@journal.project, @journal),
+                method: :patch,
+                data: { turbo_frame: "journal_summary_#{journal.id}", editable_target: "form" },
+                class: "hidden" do |f| %>
+
+    <%= f.text_area :summary,
+                    class: "w-full border p-2",
+                    data: {
+                      editable_target: "textarea",
+                      action: "blur->editable#save"
+                    } %>
+  <% end %>
+</div>
