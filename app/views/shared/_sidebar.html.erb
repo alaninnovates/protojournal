@@ -39,19 +39,19 @@
           mobile_icon_only: true,
         )) %>
       </li>
-
-      <li class="md:w-full">
-        <%= render(ButtonComponent.new(
-          text: "Journals",
-          color: :black,
-          variant: :default,
-          size: :md,
-          href: "#",
-          icon: "notebook",
-          mobile_icon_only: true,
-        )) %>
-      </li>
-
+      <% if false %>
+        <li class="md:w-full">
+          <%= render(ButtonComponent.new(
+            text: "Journals",
+            color: :black,
+            variant: :default,
+            size: :md,
+            href: "#",
+            icon: "notebook",
+            mobile_icon_only: true,
+          )) %>
+        </li>
+      <% end %>
       <li class="md:w-full">
         <%= render(ButtonComponent.new(
           text: "Profile",

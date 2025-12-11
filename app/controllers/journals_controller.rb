@@ -18,17 +18,9 @@ class JournalsController < ApplicationController
     @journal = Journal.find(params[:id])
 
     if @journal.update(journal_params)
-      respond_to do |format|
-        format.turbo_stream do
-          render partial: "journals/summary", locals: { journal: @journal }
-        end
-
-        format.html do
-          redirect_to project_journal_path(@journal.project, @journal), notice: "Updated!"
-        end
-      end
+      render turbo_stream: turbo_stream.replace("journal_summary_#{@journal.id}", partial: "journals/summary", locals: { journal: @journal })
     else
-      # handle errors...
+      head :unprocessable_entity
     end
   end
 
