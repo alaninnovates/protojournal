@@ -1,0 +1,37 @@
+<div class="inline-block relative"
+     data-controller="editable">
+
+  <%= image_tag photo.image.variant(resize_to_limit: [200, 200]),
+                class: "block w-[200px] h-auto rounded-md border border-gray-200" %>
+
+  <p data-editable-target="display"
+     class="mt-1 text-xs text-gray-600 w-[200px] break-words">
+    <%= photo.description.presence || "No description" %>
+  </p>
+
+  <% unless objective.status == "completed" %>
+    <div class="absolute -top-2 -left-2 z-10 bg-red-500 p-2 rounded-full cursor-pointer"
+         data-action="click->photo-description#removePhoto">
+      <%= icon "trash", class: "w-4 h-4 text-white" %>
+    </div>
+    <div class="absolute -top-2 -right-2 z-10 bg-blue-500 p-2 rounded-full cursor-pointer"
+         data-action="click->editable#edit">
+      <%= icon "pen", class: "w-4 h-4 text-white" %>
+    </div>
+  <% end %>
+
+  <%= form_with model: photo,
+                url: photo_path(photo),
+                method: :patch,
+                data: { turbo_frame: "photo_#{photo.id}", editable_target: "form" },
+                class: "hidden" do |f| %>
+
+    <%= f.text_area :description,
+                    rows: 2,
+                    class: "w-[200px] border p-1 text-xs",
+                    data: {
+                      editable_target: "textarea",
+                      action: "blur->editable#save"
+                    } %>
+  <% end %>
+</div>

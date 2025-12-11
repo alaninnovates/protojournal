@@ -37,11 +37,18 @@ class PhotosController < ApplicationController
 
   def update
     @photo = current_user.photos.find(params[:id])
-    @photo.update(description: params[:description])
+
+    if @photo.update(description: params[:photo][:description])
+      @objective = @photo.objective
+      render turbo_stream: turbo_stream.replace("photo_#{@photo.id}", partial: "projects/objective_photo", locals: { photo: @photo, objective: @objective })
+    else
+      head :unprocessable_entity
+    end
   end
 
   def destroy
     @photo = current_user.photos.find(params[:id])
+    @photo.image.purge
     @photo.destroy
   end
 
