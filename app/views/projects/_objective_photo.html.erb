@@ -10,10 +10,15 @@
   </p>
 
   <% unless objective.status == "completed" %>
-    <div class="absolute -top-2 -left-2 z-10 bg-red-500 p-2 rounded-full cursor-pointer"
-         data-action="click->photo-description#removePhoto">
-      <%= icon "trash", class: "w-4 h-4 text-white" %>
-    </div>
+    <%= form_with model: photo,
+                  url: photo_path(photo),
+                  method: :delete,
+                  data: { turbo_frame: "photo_#{photo.id}" },
+                  class: "inline-block" do |f| %>
+      <%= f.button type: :submit, class: "absolute -top-2 -left-2 z-10 bg-red-500 p-2 rounded-full cursor-pointer" do %>
+        <%= icon "trash", class: "w-4 h-4 text-white" %>
+      <% end %>
+    <% end %>
     <div class="absolute -top-2 -right-2 z-10 bg-blue-500 p-2 rounded-full cursor-pointer"
          data-action="click->editable#edit">
       <%= icon "pen", class: "w-4 h-4 text-white" %>

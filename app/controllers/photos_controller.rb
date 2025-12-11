@@ -49,7 +49,11 @@ class PhotosController < ApplicationController
   def destroy
     @photo = current_user.photos.find(params[:id])
     @photo.image.purge
-    @photo.destroy
+    if @photo.destroy
+      render turbo_stream: turbo_stream.remove("photo_#{@photo.id}")
+    else
+      head :unprocessable_entity
+    end
   end
 
   private
