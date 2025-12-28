@@ -41,9 +41,26 @@ class JournalsController < ApplicationController
     end
   end
 
+  def export
+    @journal = Journal.find(params[:id])
+    respond_to do |format|
+      format.html do
+        redirect_to project_journal_path(@journal.project, @journal)
+      end
+      format.pdf do
+        render pdf: "report",
+               template: "journals/export",
+               page_size: "A4",
+               margin: { top: 10, bottom: 10, left: 10, right: 10 },
+               show_as_html: params.key?('debug'),
+               disposition: "attachment"
+      end
+    end
+  end
 
   private
+
   def journal_params
-    params.require(:journal).permit(:week_start, :week_end, :summary, reflection: [ :challenges, :supports, :next_steps ], objectives_attributes: [ :id, :description, :_destroy ])
+    params.require(:journal).permit(:week_start, :week_end, :summary, reflection: [:challenges, :supports, :next_steps], objectives_attributes: [:id, :description, :_destroy])
   end
 end

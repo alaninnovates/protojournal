@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8'/>
+  <style>
+  </style>
+</head>
+<body>
+<h2>Week of <%= @journal.week_start.strftime("%B %d, %Y") %>
+  - <%= @journal.week_end.strftime("%B %d, %Y") %></h2>
+<div>
+  <h2>Weekly Summary</h2>
+  <p><%= @journal.summary || "Add a summary..." %></p>
+</div>
+
+<div>
+  <h2>Reflection</h2>
+  <div>
+    <h3>Challenges</h3>
+    <p><%= @journal.reflection&.challenges.presence || "Add challenges..." %></p>
+  </div>
+  <div>
+    <h3>Next Steps</h3>
+    <p><%= @journal.reflection&.next_steps.presence || "Add next steps..." %></p>
+  </div>
+  <div>
+    <h3>Support Received</h3>
+    <p><%= @journal.reflection&.supports.presence || "Add support you received..." %></p>
+  </div>
+</div>
+</body>
+</html>

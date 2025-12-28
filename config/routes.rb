@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :journals do
-      # resource :reflection, only: [:edit, :update, :create, :show, :new]
+      get "export", to: "journals#export", on: :member
     end
     resources :objectives do
       get "latest_journal_objectives", to: "objectives#latest_journal_objectives", on: :collection

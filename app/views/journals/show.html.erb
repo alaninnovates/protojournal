@@ -10,22 +10,16 @@
         - <%= @journal.week_end.strftime("%B %d, %Y") %></h2>
     </div>
     <div class="flex items-center gap-2 mb-6">
-      <%#= render(ButtonComponent.new(
-        color: :gray,
-        text: "Edit",
-        type: "button",
-        icon: "pencil",
-        data: {
-        }
-      )) %>
-      <%= render(ButtonComponent.new(
-        color: :blue,
-        text: "Export",
-        type: "button",
-        icon: "download",
-        data: {
-        }
-      )) %>
+      <%= form_with model: @journal,
+                    url: export_project_journal_path(@journal.project, @journal, format: :pdf),
+                    method: :get do |f| %>
+        <%= render(ButtonComponent.new(
+          color: :blue,
+          text: "Export",
+          icon: "download",
+          type: :submit,
+        )) %>
+      <% end %>
     </div>
   </div>
   <turbo-frame id="journal_summary_<%= @journal.id %>">
