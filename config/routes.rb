@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post "login", to: "sessions#create"
   delete "login", to: "sessions#destroy"
   get "signup", to: "registrations#new"
+  post "signup", to: "registrations#create"
   resources :passwords, param: :token
 
   resources :projects do
