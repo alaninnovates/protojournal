@@ -1,0 +1,65 @@
+<div data-controller="editable" class="mb-6 p-6 rounded-2xl border">
+  <div class="flex items-center justify-between mb-4">
+    <h2 class="font-mono">Reflection</h2>
+    <div data-editable-target="display" class="bg-blue-500 p-2 rounded-full cursor-pointer" data-action="click->editable#edit">
+      <%= icon "pen", class: "w-4 h-4 text-white" %>
+    </div>
+  </div>
+  <%# VIEW MODE %>
+  <div data-editable-target="display" class="flex gap-2 flex-col">
+    <div class="mb-4">
+      <h3 class="font-semibold">Challenges</h3>
+      <p><%= @journal.reflection&.challenges.presence || "Add challenges..." %></p>
+    </div>
+    <div class="mb-4">
+      <h3 class="font-semibold">Next Steps</h3>
+      <p><%= @journal.reflection&.next_steps.presence || "Add next steps..." %></p>
+    </div>
+    <div class="mb-4">
+      <h3 class="font-semibold">Support Received</h3>
+      <p><%= @journal.reflection&.supports.presence || "Add support you received..." %></p>
+    </div>
+  </div>
+
+  <%# EDIT MODE %>
+  <%= form_with model: journal,
+                url: project_journal_path(@journal.project, @journal),
+                method: :patch,
+                data: { turbo_frame: "journal_reflection_#{journal.id}", editable_target: "form" },
+                class: "hidden" do |f| %>
+
+    <div class="mb-4">
+      <h3 class="font-semibold mb-2">Challenges</h3>
+      <%= f.text_area :challenges,
+                      name: "journal[reflection][challenges]",
+                      value: @journal.reflection&.challenges,
+                      class: "w-full border p-2",
+                      data: {
+                        editable_target: "textarea",
+                        action: "blur->editable#save"
+                      } %>
+    </div>
+    <div class="mb-4">
+      <h3 class="font-semibold mb-2">Next Steps</h3>
+      <%= f.text_area :next_steps,
+                      name: "journal[reflection][next_steps]",
+                      value: @journal.reflection&.next_steps,
+                      class: "w-full border p-2",
+                      data: {
+                        editable_target: "textarea",
+                        action: "blur->editable#save"
+                      } %>
+    </div>
+    <div class="mb-4">
+      <h3 class="font-semibold mb-2">Support Received</h3>
+      <%= f.text_area :supports,
+                      name: "journal[reflection][supports]",
+                      value: @journal.reflection&.supports,
+                      class: "w-full border p-2",
+                      data: {
+                        editable_target: "textarea",
+                        action: "blur->editable#save"
+                      } %>
+    </div>
+  <% end %>
+</div>

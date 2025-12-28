@@ -17,16 +17,33 @@ class JournalsController < ApplicationController
   def update
     @journal = Journal.find(params[:id])
 
-    if @journal.update(journal_params)
-      render turbo_stream: turbo_stream.replace("journal_summary_#{@journal.id}", partial: "journals/summary", locals: { journal: @journal })
+    if journal_params.key?(:reflection)
+      if @journal.reflection
+        if @journal.reflection.update(journal_params[:reflection])
+          render turbo_stream: turbo_stream.replace("journal_reflection_#{@journal.id}", partial: "journals/reflection", locals: { journal: @journal })
+        else
+          head :unprocessable_entity
+        end
+      else
+        reflection = @journal.build_reflection(journal_params[:reflection])
+        if reflection.save
+          render turbo_stream: turbo_stream.replace("journal_reflection_#{@journal.id}", partial: "journals/reflection", locals: { journal: @journal })
+        else
+          head :unprocessable_entity
+        end
+      end
     else
-      head :unprocessable_entity
+      if @journal.update(journal_params)
+        render turbo_stream: turbo_stream.replace("journal_summary_#{@journal.id}", partial: "journals/summary", locals: { journal: @journal })
+      else
+        head :unprocessable_entity
+      end
     end
   end
 
 
   private
   def journal_params
-    params.require(:journal).permit(:week_start, :week_end, :summary)
+    params.require(:journal).permit(:week_start, :week_end, :summary, reflection: [ :challenges, :supports, :next_steps ], objectives_attributes: [ :id, :description, :_destroy ])
   end
 end

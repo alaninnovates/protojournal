@@ -5,7 +5,7 @@ export default class extends Controller {
     static targets = ["display", "form", "textarea"]
 
     edit() {
-        this.displayTarget.classList.add("hidden");
+        this.displayTargets.forEach(t => t.classList.add("hidden"));
         this.formTarget.classList.remove("hidden");
 
         this.textareaTarget.focus();

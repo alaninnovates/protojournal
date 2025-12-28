@@ -3,10 +3,35 @@
     <%= icon "arrow-left", class: "w-4 h-4" %>
     <%= link_to "Back to Journals", project_path(@journal.project) %>
   </div>
-  <h1 class="text-2xl font-bold">Journal</h1>
-  <h2 class="text-lg mb-4">Week of <%= @journal.week_start.strftime("%B %d, %Y") %>
-    - <%= @journal.week_end.strftime("%B %d, %Y") %></h2>
+  <div class="flex items-center justify-between mb-6">
+    <div>
+      <h1 class="text-2xl font-bold">Journal</h1>
+      <h2 class="text-lg mb-4">Week of <%= @journal.week_start.strftime("%B %d, %Y") %>
+        - <%= @journal.week_end.strftime("%B %d, %Y") %></h2>
+    </div>
+    <div class="flex items-center gap-2 mb-6">
+      <%#= render(ButtonComponent.new(
+        color: :gray,
+        text: "Edit",
+        type: "button",
+        icon: "pencil",
+        data: {
+        }
+      )) %>
+      <%= render(ButtonComponent.new(
+        color: :blue,
+        text: "Export",
+        type: "button",
+        icon: "download",
+        data: {
+        }
+      )) %>
+    </div>
+  </div>
   <turbo-frame id="journal_summary_<%= @journal.id %>">
     <%= render "journals/summary", journal: @journal %>
+  </turbo-frame>
+  <turbo-frame id="journal_reflection_<%= @journal.id %>">
+    <%= render "journals/reflection", journal: @journal %>
   </turbo-frame>
 </div>
