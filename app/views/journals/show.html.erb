@@ -31,6 +31,18 @@
   <turbo-frame id="journal_summary_<%= @journal.id %>">
     <%= render "journals/summary", journal: @journal %>
   </turbo-frame>
+  <div data-controller="editable" class="mb-6 p-6 rounded-2xl border">
+    <h2 class="font-mono mb-4">Objective Completion</h2>
+    <ul class="list-disc list-inside">
+      <% @journal.objectives.each do |objective| %>
+        <li class="mb-1">
+          <span><%= objective.description %></span>
+          <span class="font-mono text-sm <%= objective.status === 'pending' ? 'text-yellow-500' : 'text-emerald-500' %>">
+            (<%= objective.status.capitalize %>)</span>
+        </li>
+      <% end %>
+    </ul>
+  </div>
   <turbo-frame id="journal_reflection_<%= @journal.id %>">
     <%= render "journals/reflection", journal: @journal %>
   </turbo-frame>
