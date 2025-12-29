@@ -17,27 +17,27 @@ report" system.
     <tr>
         <td>
             Make and list out your projects<br>
-            <img src="github/images/projects.jpeg" alt="Project List" width="200"/>
+            <img src="github/images/projects.jpeg" alt="Project List" width="400"/>
         </td>
         <td>
             Create a weekly journal<br>
-            <img src="github/images/journal_list.jpeg" alt="Journal List" width="200"/>
+            <img src="github/images/journal_list.jpeg" alt="Journal List" width="400"/>
         </td>
     </tr>
     <tr>
         <td>
             Create objectives for the weekly<br>
-            <img src="github/images/objectives.jpeg" alt="Weekly Objectives" width="200"/>
+            <img src="github/images/objectives.jpeg" alt="Weekly Objectives" width="400"/>
         </td>
         <td>
             Dump photos and associate them with objectives<br>
-            <img src="github/images/dump.png" alt="Photo Dump" width="200"/>
+            <img src="github/images/dump.png" alt="Photo Dump" width="400"/>
         </td>
     </tr>
     <tr>
         <td>
             Reflect on your weekly progress<br>
-            <img src="github/images/journal.jpeg" alt="Journal" width="200"/>
+            <img src="github/images/journal.jpeg" alt="Journal" width="400"/>
         </td>
     </tr>
 </table>
